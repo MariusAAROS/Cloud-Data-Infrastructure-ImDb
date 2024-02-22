@@ -63,7 +63,8 @@
                 "characters": {
                     "type": "array",
                     "items": { "type": "string" }
-                }
+                },
+                "primaryName": { "type": "string" }
             },
             "required": ["id", "name"]
         },

@@ -1,0 +1,144 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "person": {
+            "type": "object",
+            "properties": {
+                "nconst": { "type": "string" },
+                "primaryName": { "type": "string" },
+                "birthYear": { "type": "string", "format": "date" },
+                "deathYear": { "type": "string", "format": "date" },
+                "primaryProfession": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "knownForTitles": {
+                    "type": "array",
+                    "items": { "type": "string"}
+                }
+            },
+            "required": ["id", "name"]
+        },
+        "film": {
+            "type": "object",
+            "properties": {
+                "tconst": { "type": "string" },
+                "titleType": { "type": "string" },
+                "primaryTitle": { "type": "string" },
+                "originalTitle": { "type": "string" },
+                "isAdult": { "type": "boolean" },
+                "startYear": { "type": "string", "format": "date" },
+                "endYear": { "type": "string", "format": "date" },
+                "runtimeMinutes": { "type": "integer" },
+                "genres": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "averageRating": { "type": "array",
+                    "items": { "type": "number" }
+                },
+                "numVotes": { "type": "array",
+                    "items": { "type": "integer" }
+                },
+                "directors": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "originalRegion": { "type": "string" },
+                "titles": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
+            },
+            "required": ["tconst", "primaryTitle"]
+        },
+        "castingMember": {
+            "type": "object",
+            "properties": {
+                "tconst": { "type": "string" },
+                "ordering": { "type": "integer" },
+                "nconst": { "type": "string" },
+                "category": { "type": "string" },
+                "job": { "type": "string" },
+                "characters": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
+            },
+            "required": ["id", "name"]
+        },
+        "crewMember": {
+            "type": "object",
+            "properties": {
+                "tconst": { "type": "string" },
+                "directors": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "writers": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                }
+            },
+            "required": ["id", "name"]
+        },
+        "episode": {
+            "type": "object",
+            "properties": {
+                "tconst": { "type": "string" },
+                "parentTconst": { "type": "string" },
+                "seasonNumber": { "type": "integer" },
+                "episodeNumber": { "type": "integer" }
+            },
+            "required": ["id", "name"]
+        },
+        "akas": {
+            "type": "object",
+            "properties": {
+                "titleId": { "type": "string" },
+                "ordering": { "type": "integer" },
+                "title": { "type": "string" },
+                "region": { "type": "string" },
+                "language": { "type": "string" },
+                "types": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "attributes": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "isOriginalTitle": { "type": "boolean" }
+            },
+            "required": ["id", "name"]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "persons": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/person"}
+        },
+        "films": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/film"}
+        },
+        "crewMembers": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/crewMember"}
+        },
+        "castingMembers": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/castingMember"}
+        },
+        "episodes": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/episode"}
+        },
+        "akas": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/akas"}
+        }
+    },
+    "required": ["persons", "films", "crewMembers", "castingMembers", "episodes", "akas"]
+}

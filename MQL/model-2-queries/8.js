@@ -25,6 +25,4 @@ db.film.aggregate([
         "person.name": 1,
         "primaryTitle": 1,
         "count": 1}}
-    
-
-    //group by actor and calculate average number of appearances
+])
